@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.herokuapp.kimilgukboot2.domain.posts.PostsRepository;
-import com.herokuapp.kimilgukboot2.service.PostsService;
+import com.herokuapp.kimilgukboot2.service.posts.PostsService;
 import com.herokuapp.kimilgukboot2.web.dto.PostsDto;
 
 import lombok.RequiredArgsConstructor;

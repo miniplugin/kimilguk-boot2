@@ -1,4 +1,4 @@
-package com.herokuapp.kimilgukboot2.service;
+package com.herokuapp.kimilgukboot2.service.posts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.herokuapp.kimilgukboot2.config.auth.LoginUser;
 import com.herokuapp.kimilgukboot2.config.auth.dto.SessionUser;
 import com.herokuapp.kimilgukboot2.domain.posts.Posts;
-import com.herokuapp.kimilgukboot2.service.FileService;
-import com.herokuapp.kimilgukboot2.service.PostsService;
+import com.herokuapp.kimilgukboot2.service.posts.FileService;
+import com.herokuapp.kimilgukboot2.service.posts.PostsService;
 import com.herokuapp.kimilgukboot2.web.dto.FileDto;
 import com.herokuapp.kimilgukboot2.web.dto.PostsDto;
 

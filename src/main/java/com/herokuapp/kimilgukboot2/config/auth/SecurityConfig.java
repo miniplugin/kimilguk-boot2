@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
+	@Autowired
+	private CustomOAuth2UserService customOAuth2UserService;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -52,7 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.invalidateHttpSession(true)//로그아웃시 생성된 모든 세션 지우기
 		.and()
 		.formLogin()//스프링 시큐리티에 내장된 로그인 폼 사용 내장된 Url: /login
-		.defaultSuccessUrl("/");//로그인 성공시 기본 이동 경로지정		
+		.defaultSuccessUrl("/")//로그인 성공시 기본 이동 경로지정
+		.and()
+		.oauth2Login()
+		.userInfoEndpoint()
+		.userService(customOAuth2UserService);//customOAuth2UserService 나중에 코딩예정 : 로그인성공시 세션정보를 저장하는 서비스클래스
 	}
 
 }

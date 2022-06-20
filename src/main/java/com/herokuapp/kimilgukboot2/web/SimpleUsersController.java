@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.herokuapp.kimilgukboot2.config.auth.LoginUser;
 import com.herokuapp.kimilgukboot2.config.auth.dto.SessionUser;
@@ -59,12 +60,12 @@ public class SimpleUsersController {
 		return null;
 	}
 	@GetMapping("/simple_users/list")//회원목록 디자인보기
-	public String simpleUsersList(@PageableDefault(size=5,sort="id",direction=Sort.Direction.DESC) Pageable pageable, Model model,@LoginUser SessionUser user) {
+	public String simpleUsersList(@RequestParam(value="keyword",defaultValue="")String keyword,@PageableDefault(size=5,sort="id",direction=Sort.Direction.DESC) Pageable pageable, Model model,@LoginUser SessionUser user) {
 		if(user != null) {
 			//회원등록 가능한 상태인지 확인하는 용도
 			model.addAttribute("sessionUserName", user.getName());
 		}
-		Page<SimpleUsers> usersList = simpleUsersService.usersList(pageable);
+		Page<SimpleUsers> usersList = simpleUsersService.usersList(keyword,pageable);
 		model.addAttribute("usersList", usersList);//회원목록 5개
 		model.addAttribute("currPage", usersList.getPageable().getPageNumber());//현재페이지번호
 		model.addAttribute("pageIndex", usersList.getTotalPages());//전체페이지개수
